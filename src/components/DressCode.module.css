@@ -1,0 +1,207 @@
+.section {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Lace borders: repeat horizontally at a fixed height across the full section width.
+   Top:    public/images/lace-border-upper.png (scallops hang down)
+   Bottom: public/images/lace-border-lower.png (scallops point up) */
+.lace {
+  height: clamp(2.5rem, 5vw, 5rem);
+  margin: 0 -1.5rem;
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+}
+
+.laceTop {
+  background-image: url("/images/lace-border-upper.png");
+  margin-bottom: 4rem;
+}
+
+.laceBottom {
+  background-image: url("/images/lace-border-lower.png");
+  margin-top: 6rem;
+}
+
+.title {
+  color: var(--sky);
+}
+
+/* Ribbon illustration: public/images/ribbon.png */
+.bow {
+  width: 12rem;
+  aspect-ratio: 472 / 338;
+  margin: 1.5rem auto;
+  background: url("/images/ribbon.png") center / contain no-repeat;
+}
+
+.tabs {
+  max-width: 58rem;
+  margin: 3rem auto 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.tab {
+  flex: 1 1 auto;
+  padding: 0.9rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--sky);
+  color: #111;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    background 150ms ease;
+}
+
+.tab:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.25);
+}
+
+.tab:active {
+  transform: translateY(0) scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .tab:hover,
+  .tab:active {
+    transform: none;
+    transition: none;
+  }
+}
+
+.tabActive {
+  background: var(--cream);
+  outline: 3px solid var(--sky);
+}
+
+.card {
+  max-width: 58rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.cardTitle {
+  font-size: clamp(1.35rem, 6vw, 1.75rem);
+  overflow-wrap: anywhere;
+  color: #000;
+}
+
+.swatches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.25rem 0 0;
+}
+
+.swatchRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.swatch {
+  width: clamp(2.75rem, 17vw, 4.5rem);
+  height: clamp(2.75rem, 17vw, 4.5rem);
+  border-radius: 50%;
+}
+
+.swatchOutlined {
+  box-shadow: inset 0 0 0 1px #b8d7ea;
+}
+
+.note {
+  font-size: 1rem;
+  line-height: 1.4;
+  max-width: 22rem;
+}
+
+/* Phones: title + swatches, then the image, then the note (the left column's children
+   become direct items of the card grid so they can be ordered). */
+@media (max-width: 25rem) {
+  .card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+}
+
+.left {
+  display: contents;
+}
+
+.head {
+  order: 1;
+}
+
+.inspo {
+  order: 2;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 1.5rem;
+}
+
+.note {
+  order: 3;
+}
+
+@media (min-width: 48rem) {
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem;
+    border-radius: 2rem;
+  }
+
+  .swatch {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.75rem;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .head,
+  .inspo,
+  .note {
+    order: 0;
+  }
+
+  .swatches {
+    margin-bottom: 2rem;
+  }
+
+  .note {
+    font-size: 1.125rem;
+  }
+
+  .inspo {
+    aspect-ratio: auto;
+    min-height: 24rem;
+  }
+}

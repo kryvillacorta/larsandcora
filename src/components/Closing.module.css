@@ -1,0 +1,83 @@
+/* Background photo: public/images/closing-image.jpg (2400x2010 after compression).
+   Phones (Figma frame 463x1003): a tall section where the couple is enlarged at the bottom
+   and plain wall color fills the top for the text. A gradient blends the photo's top edge
+   into that wall color (#ebece3, sampled from the photo).
+   Tablet and up: the photo fills the section at its own proportions. */
+.closing {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 463 / 840;
+  padding-top: 19vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  color: var(--navy);
+  background: #ebece3 url("/images/closing-image.jpg") 48% bottom / 175% auto no-repeat;
+}
+
+/* soft blend where the photo's top edge meets the wall color (phones only) */
+.closing::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 146.6vw; /* the photo's rendered height at 175% width */
+  background: linear-gradient(to bottom, #ebece3 0, rgb(235 236 227 / 0) 24%);
+  pointer-events: none;
+}
+
+.closing > * {
+  position: relative;
+}
+
+.with {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Stylized names: public/images/larscora-stylized-names.png (538x400) */
+.names {
+  width: 52vw;
+  margin: 0.25rem 0 0;
+  line-height: 0;
+}
+
+.namesImage {
+  width: 100%;
+  height: auto;
+}
+
+.date {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+}
+
+@media (min-width: 48rem) {
+  .closing {
+    min-height: 28rem;
+    aspect-ratio: 2880 / 2412;
+    padding-top: clamp(2rem, 6vw, 6rem);
+    background: var(--paper) url("/images/closing-image.jpg") 60% bottom / cover no-repeat;
+  }
+
+  .closing::before {
+    display: none;
+  }
+
+  .with {
+    font-size: clamp(1.25rem, 2.6vw, 2.25rem);
+  }
+
+  .names {
+    width: clamp(11rem, 26vw, 22rem);
+  }
+
+  .date {
+    font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+  }
+}

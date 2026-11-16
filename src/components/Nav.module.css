@@ -1,0 +1,131 @@
+/* Frosted-glass bar: translucent cream tint + backdrop blur, so the page shows softly
+   through it. It's glassy at the top of the page and a little more opaque once scrolled. */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgb(255 253 240 / 0.45);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgb(255 255 255 / 0.45);
+  box-shadow: 0 4px 24px rgb(31 51 80 / 0.08);
+  transition:
+    background 400ms ease,
+    box-shadow 400ms ease;
+}
+
+.scrolled {
+  background: rgb(255 253 240 / 0.68);
+  box-shadow: 0 6px 28px rgb(31 51 80 / 0.16);
+}
+
+.nav {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* The logo artwork (public/images/lc-logo.png, 578x367) is light-colored, so it is used as a
+   mask and filled with navy to stay visible on the glass bar. */
+.logo {
+  display: block;
+  height: 2.5rem;
+  aspect-ratio: 578 / 367;
+  background: var(--navy);
+  -webkit-mask: url("/images/lc-logo.png") center / contain no-repeat;
+  mask: url("/images/lc-logo.png") center / contain no-repeat;
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+  opacity: 0.85;
+}
+
+.desktopLinks {
+  display: none;
+  gap: 2rem;
+}
+
+/* Menu items are navy, with a thin underline that grows in on hover */
+.link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.2rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.toggle {
+  color: var(--navy);
+}
+
+.bar {
+  display: block;
+  width: 1.5rem;
+  height: 0.125rem;
+  background: currentColor;
+  margin-bottom: 0.375rem;
+}
+
+.bar:last-child {
+  margin-bottom: 0;
+}
+
+.mobileMenu {
+  border-top: 1px solid rgb(31 51 80 / 0.12);
+  padding: 1rem 1.5rem 1.25rem;
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobileLink {
+  font-size: 1.05rem;
+  line-height: 1.5rem;
+}
+
+@media (min-width: 48rem) {
+  .desktopLinks {
+    display: flex;
+  }
+
+  .toggle,
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .link::after {
+    transition: none;
+  }
+}

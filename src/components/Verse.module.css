@@ -1,0 +1,48 @@
+/* Background photo.
+   Phones: public/images/ring-photo-mobile.jpg (1179x2556, the same 324x703 proportions as the
+   Figma mobile frame), shown as-is with the verse in the upper left.
+   Tablet and up: public/images/ring-photo.jpg, and the section keeps that photo's proportions. */
+.verse {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 324 / 703;
+  padding: 24vw 12.6vw 0;
+  overflow: hidden;
+  background: var(--navy) url("/images/ring-photo-mobile.jpg") center / cover no-repeat;
+}
+
+.content {
+  position: relative;
+  max-width: 9.5em;
+  color: var(--sky);
+  text-align: left;
+  font-size: clamp(1.25rem, 6.2vw, 1.7rem);
+  text-shadow: 0 1px 6px rgb(0 0 0 / 0.35);
+}
+
+.quote {
+  font-family: var(--font-body), Georgia, serif;
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.3;
+  text-wrap: wrap;
+}
+
+.reference {
+  margin-top: 0.9em;
+  font-size: 0.5em;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 48rem) {
+  .verse {
+    min-height: 22rem;
+    aspect-ratio: 2892 / 1596;
+    padding: clamp(2rem, 9vw, 9rem) clamp(1.5rem, 8vw, 8rem);
+    background-image: url("/images/ring-photo.jpg");
+  }
+
+  .content {
+    font-size: clamp(1.25rem, 2.7vw, 2.5rem);
+  }
+}

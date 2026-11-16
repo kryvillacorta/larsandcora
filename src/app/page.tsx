@@ -1,25 +1,27 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Details from "@/components/Details";
-import OurStory from "@/components/OurStory";
-import Schedule from "@/components/Schedule";
-import Travel from "@/components/Travel";
-import Registry from "@/components/Registry";
-import RSVP from "@/components/RSVP";
-import Footer from "@/components/Footer";
+import Invitation from "@/components/Invitation";
+import Verse from "@/components/Verse";
+import Entourage from "@/components/Entourage";
+import DressCode from "@/components/DressCode";
+import GiftGuide from "@/components/GiftGuide";
+import BeforeRsvp from "@/components/BeforeRsvp";
+import Closing from "@/components/Closing";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
     <main>
+      <ScrollReveal />
       <Nav />
       <Hero />
-      <Details />
-      <OurStory />
-      <Schedule />
-      <Travel />
-      <Registry />
-      <RSVP />
-      <Footer />
+      <Invitation />
+      <Verse />
+      <Entourage />
+      <DressCode />
+      <GiftGuide />
+      <BeforeRsvp />
+      <Closing />
     </main>
   );
 }

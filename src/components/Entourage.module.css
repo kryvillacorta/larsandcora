@@ -1,0 +1,68 @@
+.title {
+  color: var(--navy);
+}
+
+.grid {
+  max-width: 38rem;
+  margin: 4rem auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.5rem;
+  row-gap: 2.5rem;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.fullLabel {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.left .label {
+  text-align: right;
+}
+
+.line {
+  height: 1.8rem;
+  border-bottom: 2px solid var(--sky);
+}
+
+/* Phones: everything in one centered column */
+@media (max-width: 40rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .full {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .group {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  .label,
+  .left .label,
+  .fullLabel {
+    text-align: center;
+  }
+}

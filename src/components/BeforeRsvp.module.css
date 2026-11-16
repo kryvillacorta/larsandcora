@@ -1,0 +1,175 @@
+.title {
+  color: var(--sky);
+}
+
+.cards {
+  max-width: 72rem;
+  margin: 3rem auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 1.75rem 1.5rem;
+  border-radius: 2rem;
+  background: var(--cream);
+  color: var(--navy);
+  text-align: center;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgb(0 0 0 / 0.28);
+}
+
+.card:active {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .card:active {
+    transform: none;
+    transition: none;
+  }
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.cardBody {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Intro line under the title (same look as the shared .lead, but a size smaller) */
+.intro {
+  max-width: 44rem;
+  margin: 1.25rem auto 0;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.thanks {
+  max-width: 34rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-size: 1.025rem;
+  line-height: 1.4;
+}
+
+/* Film-strip photo row */
+.strip {
+  margin: 0 -1.5rem;
+  padding: 1.25rem 1.5rem 1.75rem;
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.9rem;
+  transform: rotate(-1deg);
+}
+
+/* Film-strip photos: public/images/photo-1.jpg, photo-2.jpg, photo-3.jpg (733x565) */
+.frame {
+  aspect-ratio: 733 / 565;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* subtle idle drift, staggered per photo (see the photoN delays) */
+  animation: drift 7s ease-in-out infinite;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.frame:hover {
+  animation-play-state: paused;
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.25);
+}
+
+.photo1 {
+  background-image: url("/images/photo-1.jpg");
+}
+
+.photo2 {
+  background-image: url("/images/photo-2.jpg");
+  animation-delay: -2.3s;
+}
+
+.photo3 {
+  background-image: url("/images/photo-3.jpg");
+  animation-delay: -4.6s;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame,
+  .frame:hover {
+    animation: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+.cta {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ctaText {
+  margin: 1rem auto 2.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.ctaText u {
+  text-underline-offset: 3px;
+}
+
+.cta :global(.button) {
+  font-size: 1.5rem;
+  padding: 0.9rem 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ctaTitle {
+    font-size: 3.25rem;
+  }
+
+  .strip {
+    margin: 0 -1.5rem;
+    padding: 1.5rem 2rem 2.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
