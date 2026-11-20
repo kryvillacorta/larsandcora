@@ -43,8 +43,7 @@
   background: url("/images/lace-border-square.png") center / contain no-repeat;
 }
 
-/* QR code sits in the doily's plain center. TODO: replace the placeholder with the QR image
-   (e.g. public/images/qr-code.png set as this element's background, or an <img>). */
+/* QR code sits in the doily's plain center. */
 .qrCode {
   position: absolute;
   top: 50%;
@@ -52,6 +51,15 @@
   width: 56%;
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
+}
+
+.qrImg {
+  object-fit: contain;
+}
+
+.account {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .thanks {

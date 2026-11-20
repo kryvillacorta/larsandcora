@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./GiftGuide.module.css";
 
 export default function GiftGuide() {
@@ -19,9 +20,17 @@ export default function GiftGuide() {
         <div className={styles.qrWrap}>
           {/* Lace doily background: public/images/lace-border-square.png */}
           <div className={styles.qr}>
-            {/* TODO: replace with the QR code (e.g. GCash) */}
-            <div className={`placeholder ${styles.qrCode}`}>QR code</div>
+            <div className={styles.qrCode}>
+              <Image
+                src="/images/qr-code-square.jpg"
+                alt="GoTyme Bank InstaPay QR code for Cora Ophelia Vega"
+                fill
+                sizes="(max-width: 48rem) 50vw, 20rem"
+                className={styles.qrImg}
+              />
+            </div>
           </div>
+          <p className={styles.account}>GoTyme Bank &middot; Cora Ophelia Vega &middot; &bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull; 6739</p>
           <p className={styles.thanks}>Thank you for your love and generosity!</p>
         </div>
       </div>
