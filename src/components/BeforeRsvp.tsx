@@ -1,6 +1,6 @@
 import styles from "./BeforeRsvp.module.css";
+import RsvpForm from "./RsvpForm";
 
-const RSVP_URL = "https://larsandcora.rsvp/";
 const reminders = [
   {
     title: "An Adults-Only Celebration",
@@ -54,14 +54,7 @@ export default function BeforeRsvp() {
           Kindly let us know if you&apos;ll be celebrating with us by{" "}
           <u>December 24, 2026</u>
         </p>
-        <a
-          href={RSVP_URL}
-          className="button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          RSVP Form
-        </a>
+        <RsvpForm />
       </div>
     </section>
   );

@@ -149,10 +149,45 @@
   order: 1;
 }
 
-.inspo {
+.inspoWrap {
   order: 2;
-  aspect-ratio: 1 / 1.08;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.inspo {
+  position: relative;
+  aspect-ratio: 2 / 3;
   border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+/* artwork has a white background; multiply lets the cream card show through */
+.inspoImg {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.viewToggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.viewBtn {
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  cursor: pointer;
+}
+
+.viewBtnActive {
+  background: var(--navy);
+  color: var(--cream);
 }
 
 .note {
@@ -187,7 +222,7 @@
   }
 
   .head,
-  .inspo,
+  .inspoWrap,
   .note {
     order: 0;
   }
@@ -201,7 +236,16 @@
   }
 
   .inspo {
-    aspect-ratio: auto;
-    min-height: 24rem;
+    aspect-ratio: 2 / 3;
   }
+}
+
+.formal {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.attire {
+  margin-top: 0.75rem;
 }

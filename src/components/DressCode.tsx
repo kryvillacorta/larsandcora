@@ -1,18 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from "./DressCode.module.css";
 
 type Swatch = { color: string; outlined?: boolean };
 
 // Palettes and copy from the design. Each group's swatches are listed in rows;
 // `outlined` adds a thin border to very light colors so they stay visible on the cream card.
+const ATTIRE: Record<string, string> = {
+  Women: "Floor length to tea length (lower calf).",
+  Men: "Coat is optional.",
+};
+
 const groups: {
   id: string;
   label: string;
   title: string;
   swatchRows: Swatch[][];
   note: string;
+  images: { label: string; src: string }[];
 }[] = [
   {
     id: "parents",
@@ -20,20 +27,15 @@ const groups: {
     title: "Parents & Godparents",
     swatchRows: [[{ color: "#1f3350" }]],
     note: "Please wear the designated shade for our parents and godparents.",
+    images: [{ label: "Men", src: "/images/M Parents & Godparents .png" }, { label: "Women", src: "/images/W Parents & Godparents.png" }],
   },
   {
     id: "bridesmaids",
     label: "Bridesmaids",
     title: "Entourage - Women",
-    swatchRows: [
-      [{ color: "#b9d8ea" }, { color: "#c8dfee" }],
-      [
-        { color: "#fdeca0" },
-        { color: "#fdf5d3", outlined: true },
-        { color: "#fffdf0", outlined: true },
-      ],
-    ],
+    swatchRows: [[{ color: "#b9d8ea" }, { color: "#fdeca0" }]],
     note: "For our lovely ladies in the entourage, please follow this soft, light-toned palette.",
+    images: [{ label: "Women", src: "/images/W Bridesmaid.png" }],
   },
   {
     id: "groomsmen",
@@ -41,19 +43,23 @@ const groups: {
     title: "Entourage - Men",
     swatchRows: [[{ color: "#2e1f17" }, { color: "#886d58" }, { color: "#3d4a37" }]],
     note: "For the gentlemen, please follow the designated earthy tones.",
+    images: [{ label: "Men", src: "/images/M Groomsmen.png" }],
   },
   {
     id: "guests",
     label: "Guests",
     title: "Guests - Friends & Families",
-    swatchRows: [[{ color: "#7b956d" }, { color: "#a6b59d" }, { color: "#e5b2cf" }]],
+    swatchRows: [[{ color: "#7b956d" }, { color: "#a6b59d" }, { color: "#e2c5c3" }]],
     note: "We invite our guests to wear either of these lovely shades of green and blush pink.",
+    images: [{ label: "Men", src: "/images/M Guest.png" }, { label: "Women", src: "/images/W Guest.png" }],
   },
 ];
 
 export default function DressCode() {
   const [active, setActive] = useState(groups[0].id);
   const group = groups.find((g) => g.id === active) ?? groups[0];
+  const [view, setView] = useState("Men");
+  const image = group.images.find((i) => i.label === view) ?? group.images[0];
 
   return (
     <section id="dress-code" className={`section section-navy ${styles.section}`}>
@@ -64,6 +70,10 @@ export default function DressCode() {
       <p className="lead">
         As we celebrate amidst the beauty of nature, we&apos;d love for you to
         dress in a way that complements our garden-inspired celebration.
+      </p>
+
+      <p className={`lead ${styles.formal}`}>
+        <strong>Dress code: Formal.</strong>
       </p>
 
       {/* Ribbon illustration: public/images/ribbon.png */}
@@ -107,10 +117,40 @@ export default function DressCode() {
               ))}
             </div>
           </div>
-          <p className={styles.note}>{group.note}</p>
+          <div className={styles.note}>
+            <p>{group.note}</p>
+            <p className={styles.attire}>
+              <strong>{image.label}:</strong> {ATTIRE[image.label]}
+            </p>
+          </div>
         </div>
-        {/* TODO: replace with outfit inspiration image */}
-        <div className={`placeholder ${styles.inspo}`}>Outfit inspiration</div>
+        <div className={styles.inspoWrap}>
+          {group.images.length > 1 && (
+            <div className={styles.viewToggle} role="group" aria-label="Outfit for">
+              {group.images.map((i) => (
+                <button
+                  key={i.label}
+                  type="button"
+                  aria-pressed={i.label === image.label}
+                  className={`${styles.viewBtn} ${i.label === image.label ? styles.viewBtnActive : ""}`}
+                  onClick={() => setView(i.label)}
+                >
+                  {i.label}
+                </button>
+              ))}
+            </div>
+          )}
+          <div className={styles.inspo}>
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={`${group.title} outfit inspiration, ${image.label.toLowerCase()}`}
+              fill
+              sizes="(max-width: 48rem) 90vw, 28rem"
+              className={styles.inspoImg}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Bottom lace border: public/images/lace-border-lower.png */}

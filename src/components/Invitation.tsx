@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./Invitation.module.css";
 
 const MAPS_URL = "https://maps.app.goo.gl/mkX6tFHJsaodwrju8";
@@ -28,8 +29,15 @@ export default function Invitation() {
             celebration.
           </p>
 
-          {/* TODO: replace with the illustrated map image */}
-          <div className={`placeholder ${styles.map}`}>Map illustration</div>
+          <div className={styles.map}>
+            <Image
+              src="/images/Map.png"
+              alt="Illustrated map from the church to the reception venue"
+              fill
+              sizes="(max-width: 48rem) 76vw, 40vw"
+              className={styles.mapImg}
+            />
+          </div>
 
           <div className={styles.reception}>
             <h3 className={styles.receptionTitle}>The Reception</h3>

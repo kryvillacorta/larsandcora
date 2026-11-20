@@ -1,14 +1,41 @@
 import styles from "./Entourage.module.css";
 
-// Fill in names later: each group is a label plus the number of blank lines to show.
-// Replace the `lines` count with a `names: string[]` array once the lists are final.
-const SPONSOR_LINES = 6;
+const GROOM_PARENTS = ["Michael Angelo B. Diaz", "Polyana K. Diaz"];
+const BRIDE_PARENTS = ["Medarlo E. Vega", "Virginia F. Vega"];
+const BEST_MAN = "Patrick Charles E. Alarcio";
+const MAID_OF_HONOR = "Shermanne Kaiylah V. Landingin";
 
-function Lines({ count }: { count: number }) {
+const GROOMSMEN = [
+  "Ayvan James K. Vergara",
+  "Jerry Jerald G. Villarin Jr.",
+  "Lee Carlo A. Elaydo",
+  "Ervin Josh A. Ong",
+  "Lance Christian C. Teope",
+];
+
+const BRIDESMAIDS = [
+  "Marianne Keirrah Jhane V. Baes",
+  "Marielle Kassandra Louise V. Baes",
+  "Ma. Zara Micah V. Landingin",
+  "Laramy Adrienne K. Diaz",
+  "Laraine Aiyana K. Diaz",
+  "Laraelyn Amira K. Diaz",
+];
+
+// Each couple is one row: [left name, right name]
+const GODPARENTS: [string, string][] = [
+  ["Rolly T. Alarcio", "Jennifer E. Alarcio"],
+  ["Joshua Laureta", "Jemma Rhea SP. Laureta"],
+  ["Fortunato N. Almasco Jr.", "Clarina Lorelei S. Almasco"],
+];
+
+function Names({ names }: { names: string[] }) {
   return (
     <>
-      {Array.from({ length: count }, (_, i) => (
-        <div key={i} className={styles.line} />
+      {names.map((n) => (
+        <div key={n} className={styles.line}>
+          {n}
+        </div>
       ))}
     </>
   );
@@ -27,39 +54,39 @@ export default function Entourage() {
       <div className={styles.grid}>
         <div className={`${styles.group} ${styles.left}`}>
           <h3 className={styles.label}>Parents of the Groom</h3>
-          <Lines count={2} />
+          <Names names={GROOM_PARENTS} />
         </div>
         <div className={styles.group}>
           <h3 className={styles.label}>Parents of the Bride</h3>
-          <Lines count={2} />
+          <Names names={BRIDE_PARENTS} />
         </div>
 
         <div className={styles.full}>
-          <h3 className={`${styles.label} ${styles.fullLabel}`}>Primary Sponsors</h3>
-          <div className={styles.group}>
-            <Lines count={SPONSOR_LINES} />
-          </div>
-          <div className={styles.group}>
-            <Lines count={SPONSOR_LINES} />
-          </div>
+          <h3 className={`${styles.label} ${styles.fullLabel}`}>Godparents</h3>
+          {GODPARENTS.map(([a, b]) => (
+            <div key={a} className={styles.couple}>
+              <div className={`${styles.line} ${styles.leftLine}`}>{a}</div>
+              <div className={styles.line}>{b}</div>
+            </div>
+          ))}
         </div>
 
         <div className={`${styles.group} ${styles.left}`}>
           <h3 className={styles.label}>Best Man</h3>
-          <Lines count={1} />
+          <Names names={[BEST_MAN]} />
         </div>
         <div className={styles.group}>
           <h3 className={styles.label}>Maid of Honor</h3>
-          <Lines count={1} />
+          <Names names={[MAID_OF_HONOR]} />
         </div>
 
         <div className={`${styles.group} ${styles.left}`}>
           <h3 className={styles.label}>Groomsmen</h3>
-          <Lines count={5} />
+          <Names names={GROOMSMEN} />
         </div>
         <div className={styles.group}>
           <h3 className={styles.label}>Bridesmaids</h3>
-          <Lines count={5} />
+          <Names names={BRIDESMAIDS} />
         </div>
       </div>
     </section>
