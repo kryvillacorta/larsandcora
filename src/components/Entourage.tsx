@@ -11,6 +11,7 @@ const GROOMSMEN = [
   "Lee Carlo A. Elaydo",
   "Ervin Josh A. Ong",
   "Lance Christian C. Teope",
+  "John Joseph L. Pariñal",
 ];
 
 const BRIDESMAIDS = [
@@ -25,7 +26,7 @@ const BRIDESMAIDS = [
 // Each couple is one row: [left name, right name]
 const GODPARENTS: [string, string][] = [
   ["Rolly T. Alarcio", "Jennifer E. Alarcio"],
-  ["Joshua Laureta", "Jemma Rhea SP. Laureta"],
+  ["Joshua A. Laureta", "Jemma Rhea SP. Laureta"],
   ["Fortunato N. Almasco Jr.", "Clarina Lorelei S. Almasco"],
 ];
 

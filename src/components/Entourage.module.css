@@ -40,7 +40,6 @@
 .line {
   min-height: 1.8rem;
   padding: 0.15rem 0;
-  border-bottom: 2px solid var(--sky);
   line-height: 1.3;
 }
 

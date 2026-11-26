@@ -27,7 +27,7 @@ const groups: {
     title: "Parents & Godparents",
     swatchRows: [[{ color: "#1f3350" }]],
     note: "Please wear the designated shade for our parents and godparents.",
-    images: [{ label: "Men", src: "/images/M Parents & Godparents .png" }, { label: "Women", src: "/images/W Parents & Godparents.png" }],
+    images: [{ label: "Men", src: "/images/M Parents Godparents.png" }, { label: "Women", src: "/images/W Parents & Godparents.png" }],
   },
   {
     id: "bridesmaids",
