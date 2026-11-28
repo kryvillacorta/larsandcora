@@ -43,7 +43,7 @@ const groups: {
     title: "Entourage - Men",
     swatchRows: [[{ color: "#2e1f17" }, { color: "#886d58" }, { color: "#3d4a37" }]],
     note: "For the gentlemen, please follow the designated earthy tones.",
-    images: [{ label: "Men", src: "/images/M Groomsmen.png" }],
+    images: [{ label: "Men", src: "/images/Groomsmen.png" }],
   },
   {
     id: "guests",
@@ -51,7 +51,7 @@ const groups: {
     title: "Guests - Friends & Families",
     swatchRows: [[{ color: "#7b956d" }, { color: "#a6b59d" }, { color: "#e2c5c3" }]],
     note: "We invite our guests to wear either of these lovely shades of green and blush pink.",
-    images: [{ label: "Men", src: "/images/M Guests.png }, { label: "Women", src: "/images/W Guest.png" }],
+    images: [{ label: "Men", src: "/images/M Guest.png" }, { label: "Women", src: "/images/W Guest.png" }],
   },
 ];
 
