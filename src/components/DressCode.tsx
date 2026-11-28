@@ -51,7 +51,7 @@ const groups: {
     title: "Guests - Friends & Families",
     swatchRows: [[{ color: "#7b956d" }, { color: "#a6b59d" }, { color: "#e2c5c3" }]],
     note: "We invite our guests to wear either of these lovely shades of green and blush pink.",
-    images: [{ label: "Men", src: "/images/M Guest.png" }, { label: "Women", src: "/images/W Guest.png" }],
+    images: [{ label: "Men", src: "/images/M Guests.png }, { label: "Women", src: "/images/W Guest.png" }],
   },
 ];
 
